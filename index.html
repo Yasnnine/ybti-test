@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>YUTI创业人格测试 · 余村全球合伙人</title>
+  <style>
+    /* ===== 全局样式 ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --primary: #FF6B35;
+      --secondary: #FFD166;
+      --accent: #06D6A0;
+      --purple: #9B5DE5;
+      --blue: #4CC9F0;
+      --dark: #2D2D2D;
+      --light: #FFF9F0;
+      --card-bg: #FFFFFF;
+      --shadow: 0 8px 32px rgba(255, 107, 53, 0.15);
+    }
+
+    body {
+      font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--light);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--dark);
+    }
+
+    /* ===== 页面容器 ===== */
+    .page {
+      display: none;
+      min-height: 100vh;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page.active {
+      display: flex;
+    }
+
+    /* ===== 欢迎页 ===== */
+    #welcome-page {
+      background: #FAFAF7;
+      position: relative;
+      overflow: hidden;
+      justify-content: space-between;
+      padding: 0;
+    }
+
+    .welcome-bg-bubbles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    /* 小鱼群背景装饰 */
+    .bg-fish {
+      position: absolute;
+      opacity: 0.12;
+      animation: fish-swim 8s ease-in-out infinite;
+    }
+    .bg-fish:nth-child(1) { top: 8%; left: 5%; animation-delay: 0s; }
+    .bg-fish:nth-child(2) { top: 18%; right: 8%; animation-delay: 1.5s; animation-direction: reverse; }
+    .bg-fish:nth-child(3) { top: 60%; left: 3%; animation-delay: 3s; }
+    .bg-fish:nth-child(4) { bottom: 20%; right: 5%; animation-delay: 2s; animation-direction: reverse; }
+    .bg-fish:nth-child(5) { top: 40%; right: 15%; animation-delay: 4s; }
+
+    @keyframes fish-swim {
+      0%, 100% { transform: translateX(0) translateY(0); }
+      33% { transform: translateX(12px) translateY(-8px); }
+      66% { transform: translateX(-8px) translateY(6px); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .welcome-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 40px 24px 20px;
+      width: 100%;
+    }
+
+    .yuti-badge {
+      background: rgba(255,107,53,0.1);
+      border: 2px solid rgba(255,107,53,0.3);
+      border-radius: 50px;
+      padding: 6px 20px;
+      font-size: 12px;
+      color: #FF6B35;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .logo-wrap {
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-img {
+      width: 200px;
+      height: auto;
+      max-height: 160px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+    }
+
+    .welcome-title {
+      font-size: 42px;
+      font-weight: 900;
+      color: #2D2D2D;
+      text-align: center;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .welcome-subtitle {
+      font-size: 15px;
+      color: #888;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+
+    /* 主角色大图 */
+    .hero-character {
+      width: 260px;
+      height: 200px;
+      margin-bottom: 24px;
+      animation: hero-swim 3s ease-in-out infinite;
+    }
+
+    @keyframes hero-swim {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+    }
+
+    .welcome-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .welcome-tag {
+      background: rgba(255,107,53,0.08);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: #FF6B35;
+      font-weight: 600;
+      border: 1.5px solid rgba(255,107,53,0.2);
+    }
+
+    .welcome-bottom {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 20px 24px 40px;
+      background: linear-gradient(to top, rgba(250,250,247,0.95), transparent);
+    }
+
+    .start-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #FF6B35, #FF8E53);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 18px;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(255,107,53,0.35);
+      transition: all 0.2s;
+      letter-spacing: 1px;
+    }
+
+    .start-btn:active {
+      transform: scale(0.97);
+      box-shadow: 0 3px 10px rgba(255,107,53,0.2);
+    }
+
+    .welcome-tip {
+      text-align: center;
+      color: #AAA;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    /* ===== 测试页 ===== */
+    #test-page {
+      background: var(--light);
+      padding: 0;
+    }
+
+    .test-header {
+      width: 100%;
+      background: white;
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    .test-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .test-back {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .question-counter {
+      font-size: 13px;
+      color: #999;
+      font-weight: 600;
+    }
+
+    .mascot-small {
+      width: 36px;
+      height: 36px;
+    }
+
+    .progress-bar-wrapper {
+      background: #F0EDE8;
+      border-radius: 10px;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 10px;
+      transition: width 0.4s ease;
+    }
+
+    .test-body {
+      flex: 1;
+      width: 100%;
+      padding: 24px 20px;
+    }
+
+    .question-card {
+      background: white;
+      border-radius: 24px;
+      padding: 28px 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      display: none;
+    }
+
+    .question-card.active {
+      display: block;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(40px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .question-emoji {
+      font-size: 40px;
+      margin-bottom: 12px;
+      display: block;
+      text-align: center;
+    }
+
+    .question-text {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-btn {
+      background: #F8F5F0;
+      border: 2.5px solid #E8E4DE;
+      border-radius: 16px;
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--dark);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+      line-height: 1.4;
+    }
+
+    .option-btn:active {
+      transform: scale(0.98);
+    }
+
+    .option-btn.selected {
+      background: linear-gradient(135deg, #FF6B35, #FF8E53);
+      border-color: var(--primary);
+      color: white;
+      transform: scale(1.02);
+      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.35);
+    }
+
+    .option-label {
+      display: inline-block;
+      background: rgba(255,107,53,0.12);
+      color: var(--primary);
+      border-radius: 6px;
+      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    .option-btn.selected .option-label {
+      background: rgba(255,255,255,0.25);
+      color: white;
+    }
+
+    .next-btn {
+      display: none;
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), #FF8E53);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 16px;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 8px;
+      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+      transition: all 0.2s;
+      letter-spacing: 1px;
+    }
+
+    .next-btn.visible {
+      display: block;
+      animation: fadeUp 0.3s ease;
+    }
+
+    @keyframes fadeUp {
+      from { transform: translateY(10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .next-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* 趣味提示 */
+    .fun-tip {
+      background: linear-gradient(135deg, #FFF3CD, #FFEAA7);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ===== 结果页 ===== */
+    #result-page {
+      background: #FAFAF7;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      animation: twinkle 2s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.15; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.5); }
+    }
+
+    .result-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 30px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .result-label {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: white;
+      border-radius: 50px;
+      padding: 6px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }    /* ===== 结果卡片 ===== */
+    .result-card {
+      background: white;
+      border-radius: 28px;
+      width: 100%;
+      max-width: 360px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      margin-bottom: 24px;
+    }
+
+    .result-card-header {
+      padding: 28px 24px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .result-card-bg-deco {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 0;
+      opacity: 0.08;
+    }
+
+    .character-scene {
+      width: 180px;
+      height: 220px;
+      margin: 0 auto 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .result-type-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .result-type-tag {
+      display: inline-block;
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .result-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+      text-align: left;
+      padding: 0 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .result-card-body {
+      padding: 20px 24px;
+    }
+
+    .traits-section {
+      margin-bottom: 20px;
+    }
+
+    .traits-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #888;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .traits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .trait-item {
+      background: #F8F5F0;
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .trait-emoji {
+      font-size: 18px;
+    }
+
+    .trait-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .match-section {
+      background: linear-gradient(135deg, #FFF0E8, #FFF8F0);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .match-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .match-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .quote-section {
+      border-left: 4px solid var(--primary);
+      padding: 12px 16px;
+      background: #FAFAFA;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 20px;
+    }
+
+    .quote-text {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--dark);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    /* 结果页底部操作区 */
+    .result-actions {
+      width: 100%;
+      max-width: 360px;
+      padding: 0 0 16px;
+    }
+
+    .join-cta {
+      background: linear-gradient(135deg, var(--primary), #FF8E53);
+      border: none;
+      border-radius: 20px;
+      padding: 20px 24px;
+      width: 100%;
+      cursor: pointer;
+      margin-bottom: 12px;
+      text-align: left;
+      box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+      transition: all 0.2s;
+    }
+
+    .join-cta:active {
+      transform: scale(0.98);
+    }
+
+    .join-cta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .join-cta-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .join-cta-arrow {
+      font-size: 22px;
+      color: white;
+    }
+
+    .join-cta-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.4;
+    }
+
+    .share-btn {
+      width: 100%;
+      background: rgba(45,45,45,0.06);
+      border: 2px solid rgba(45,45,45,0.15);
+      border-radius: 50px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #555;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: all 0.2s;
+    }
+
+    .share-btn:active {
+      background: rgba(45,45,45,0.1);
+    }
+
+    .retry-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 12px;
+      font-size: 14px;
+      color: #AAA;
+      cursor: pointer;
+    }
+
+    /* 加载页 */
+    #loading-page {
+      background: #FAFAF7;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loading-content {
+      text-align: center;
+    }
+
+    .loading-character {
+      width: 160px;
+      height: 120px;
+      margin-bottom: 24px;
+      animation: loading-swim 1.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes loading-swim {
+      from { transform: translateX(-8px) rotate(-4deg); }
+      to { transform: translateX(8px) rotate(4deg); }
+    }
+
+    .loading-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .loading-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .loading-dot {
+      width: 10px;
+      height: 10px;
+      background: #FF6B35;
+      border-radius: 50%;
+      animation: dot-bounce 0.8s ease-in-out infinite;
+    }
+
+    .loading-dot:nth-child(2) { animation-delay: 0.15s; background: #F4D03F; }
+    .loading-dot:nth-child(3) { animation-delay: 0.3s; background: #06D6A0; }
+
+    @keyframes dot-bounce {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50% { transform: translateY(-8px); opacity: 1; }
+    }
+
+    /* 确认框 */
+    .share-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      align-items: flex-end;
+    }
+
+    .share-modal.active {
+      display: flex;
+    }
+
+    .share-modal-inner {
+      background: white;
+      border-radius: 28px 28px 0 0;
+      padding: 24px 24px 40px;
+      width: 100%;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .share-modal-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .share-modal-desc {
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .share-options {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+
+    .share-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .share-option-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .share-option-text {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .share-cancel {
+      width: 100%;
+      background: #F5F5F5;
+      border: none;
+      border-radius: 50px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #666;
+      cursor: pointer;
+    }
+
+    /* ===== 粒子效果 ===== */
+    .confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      top: -20px;
+      animation: confetti-fall linear forwards;
+    }
+
+    @keyframes confetti-fall {
+      to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 欢迎页 -->
+<div id="welcome-page" class="page active">
+  <!-- 背景装饰小鱼 -->
+  <div class="welcome-bg-bubbles">
+    <!-- 小金鱼1 -->
+    <svg class="bg-fish" width="60" height="40" viewBox="0 0 60 40">
+      <ellipse cx="28" cy="20" rx="20" ry="13" fill="#F4A261"/>
+      <path d="M46 20 L58 10 L56 20 L58 30 Z" fill="#F4A261"/>
+      <circle cx="14" cy="17" r="3.5" fill="black"/>
+    </svg>
+    <!-- 小金鱼2 -->
+    <svg class="bg-fish" width="50" height="36" viewBox="0 0 50 36">
+      <ellipse cx="24" cy="18" rx="17" ry="11" fill="#E74C3C"/>
+      <path d="M40 18 L50 9 L48 18 L50 27 Z" fill="#E74C3C"/>
+      <circle cx="12" cy="15" r="3" fill="black"/>
+    </svg>
+    <!-- 小金鱼3 -->
+    <svg class="bg-fish" width="55" height="38" viewBox="0 0 55 38">
+      <ellipse cx="26" cy="19" rx="18" ry="12" fill="#2ECC71"/>
+      <path d="M42 19 L54 10 L52 19 L54 28 Z" fill="#2ECC71"/>
+      <circle cx="13" cy="16" r="3" fill="black"/>
+    </svg>
+    <!-- 小金鱼4 -->
+    <svg class="bg-fish" width="65" height="44" viewBox="0 0 65 44">
+      <ellipse cx="30" cy="22" rx="22" ry="14" fill="#F4D03F"/>
+      <path d="M50 22 L64 12 L62 22 L64 32 Z" fill="#E8B820"/>
+      <circle cx="15" cy="19" r="4" fill="black"/>
+    </svg>
+    <!-- 小金鱼5 -->
+    <svg class="bg-fish" width="45" height="32" viewBox="0 0 45 32">
+      <ellipse cx="21" cy="16" rx="15" ry="10" fill="#9B59B6"/>
+      <path d="M34 16 L44 8 L42 16 L44 24 Z" fill="#9B59B6"/>
+      <circle cx="11" cy="13" r="2.5" fill="black"/>
+    </svg>
+  </div>
+
+  <div class="welcome-content">
+    <!-- 余村全球合伙人 Logo -->
+    <div class="logo-wrap">
+      <img src="logo.png" class="logo-img" alt="余村全球合伙人" onerror="this.style.display='none';document.getElementById('logo-svg-fallback').style.display='block'"/>
+      <svg id="logo-svg-fallback" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg" class="logo-img" style="display:none">
+        <text x="140" y="70" text-anchor="middle" font-size="72" font-weight="900" fill="#2D2D2D" font-family="'PingFang SC','Microsoft YaHei',sans-serif">余村</text>
+        <text x="140" y="145" text-anchor="middle" font-size="66" font-weight="900" fill="#2D2D2D" font-family="'PingFang SC','Microsoft YaHei',sans-serif">全球合伙人</text>
+        <text x="140" y="178" text-anchor="middle" font-size="18" fill="#888" font-family="Arial,sans-serif" letter-spacing="3">YUCUN GLOBAL PARTNERS</text>
+      </svg>
+    </div>
+    <div class="welcome-title" style="color:#2D2D2D">YUTI<br>创业人格测试</div>
+    <div class="welcome-subtitle">你是哪种合伙人？16道题揭秘你的商业人格</div>
+
+    <!-- 主角色：扁平插画风金鱼群 -->
+    <svg class="hero-character" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- 水流线条 -->
+      <path d="M20 80 Q60 70 100 80 Q140 90 180 78" stroke="#D4EEF7" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.8"/>
+      <path d="M40 130 Q80 118 120 128 Q160 138 210 125" stroke="#D4EEF7" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <!-- 小气泡 -->
+      <circle cx="230" cy="55" r="4" fill="none" stroke="#B8DFF0" stroke-width="1.5" opacity="0.7"/>
+      <circle cx="245" cy="42" r="2.5" fill="none" stroke="#B8DFF0" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="50" cy="160" r="3" fill="none" stroke="#B8DFF0" stroke-width="1.2" opacity="0.5"/>
+
+      <!-- 主角鱼：大金黄金鱼（向右游，体型最大） -->
+      <g transform="translate(80, 85)">
+        <!-- 尾巴 -->
+        <path d="M72 0 L92 -20 L88 0 L92 20 Z" fill="#E8B820"/>
+        <!-- 身体 -->
+        <ellipse cx="42" cy="0" rx="42" ry="28" fill="#F4D03F"/>
+        <!-- 肚皮高光 -->
+        <ellipse cx="36" cy="6" rx="28" ry="14" fill="#F9E87A" opacity="0.5"/>
+        <!-- 背鳍 -->
+        <path d="M20 -28 Q35 -44 55 -30" stroke="#E8B820" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M20 -28 Q35 -46 55 -30 L48 -28 L30 -28 Z" fill="#E8B820" opacity="0.7"/>
+        <!-- 胸鳍 -->
+        <ellipse cx="20" cy="8" rx="10" ry="16" fill="#E8B820" transform="rotate(-20, 20, 8)"/>
+        <!-- 大眼睛 -->
+        <circle cx="8" cy="-4" r="11" fill="white"/>
+        <circle cx="9" cy="-3" r="6.5" fill="#1A1A1A"/>
+        <circle cx="6" cy="-6" r="2.5" fill="white"/>
+      </g>
+
+      <!-- 红金鱼（左上，较大） -->
+      <g transform="translate(10, 25) scale(0.82)">
+        <path d="M68 0 L84 -17 L80 0 L84 17 Z" fill="#C0392B"/>
+        <ellipse cx="40" cy="0" rx="38" ry="25" fill="#E74C3C"/>
+        <ellipse cx="34" cy="5" rx="24" ry="12" fill="#F1948A" opacity="0.4"/>
+        <path d="M18 -24 Q30 -38 50 -26 L44 -25 L22 -25 Z" fill="#C0392B" opacity="0.8"/>
+        <ellipse cx="18" cy="7" rx="9" ry="14" fill="#C0392B" transform="rotate(-18, 18, 7)"/>
+        <circle cx="8" cy="-4" r="9.5" fill="white"/>
+        <circle cx="9" cy="-3" r="5.5" fill="#1A1A1A"/>
+        <circle cx="6" cy="-6" r="2" fill="white"/>
+      </g>
+
+      <!-- 橙粉鱼（右上，中型） -->
+      <g transform="translate(175, 18) scale(0.72)">
+        <path d="M60 0 L74 -16 L70 0 L74 16 Z" fill="#E67E22"/>
+        <ellipse cx="35" cy="0" rx="35" ry="22" fill="#F0A07A"/>
+        <ellipse cx="30" cy="5" rx="22" ry="11" fill="#FDDBB8" opacity="0.5"/>
+        <path d="M16 -20 Q27 -34 46 -22 L40 -21 L18 -21 Z" fill="#E67E22" opacity="0.8"/>
+        <ellipse cx="16" cy="6" rx="8" ry="13" fill="#E67E22" transform="rotate(-16, 16, 6)"/>
+        <circle cx="7" cy="-3" r="9" fill="white"/>
+        <circle cx="8" cy="-2" r="5" fill="#1A1A1A"/>
+        <circle cx="5.5" cy="-5" r="1.8" fill="white"/>
+      </g>
+
+      <!-- 绿鱼（中下，中型） -->
+      <g transform="translate(155, 120) scale(0.75)">
+        <path d="M62 0 L76 -16 L72 0 L76 16 Z" fill="#27AE60"/>
+        <ellipse cx="36" cy="0" rx="36" ry="23" fill="#58D68D"/>
+        <ellipse cx="31" cy="5" rx="23" ry="11" fill="#A9DFBF" opacity="0.5"/>
+        <path d="M17 -21 Q28 -36 47 -23 L41 -22 L19 -22 Z" fill="#27AE60" opacity="0.8"/>
+        <ellipse cx="17" cy="7" rx="8" ry="13" fill="#27AE60" transform="rotate(-16, 17, 7)"/>
+        <circle cx="7" cy="-3" r="9" fill="white"/>
+        <circle cx="8" cy="-2" r="5" fill="#1A1A1A"/>
+        <circle cx="5.5" cy="-5" r="1.8" fill="white"/>
+      </g>
+
+      <!-- 白黑花鱼（右下小） -->
+      <g transform="translate(218, 140) scale(0.55)">
+        <path d="M60 0 L74 -16 L70 0 L74 16 Z" fill="#BDC3C7"/>
+        <ellipse cx="35" cy="0" rx="35" ry="22" fill="#ECF0F1"/>
+        <!-- 黑斑 -->
+        <ellipse cx="28" cy="-5" rx="14" ry="12" fill="#2C3E50" opacity="0.85"/>
+        <ellipse cx="48" cy="6" rx="10" ry="8" fill="#2C3E50" opacity="0.6"/>
+        <ellipse cx="16" cy="7" rx="8" ry="12" fill="#BDC3C7" transform="rotate(-16, 16, 7)"/>
+        <circle cx="7" cy="-3" r="8.5" fill="white"/>
+        <circle cx="8" cy="-2" r="5" fill="#1A1A1A"/>
+        <circle cx="5.5" cy="-5" r="1.8" fill="white"/>
+      </g>
+
+      <!-- 小粉鱼（左下最小） -->
+      <g transform="translate(18, 145) scale(0.45)">
+        <path d="M54 0 L66 -14 L62 0 L66 14 Z" fill="#F1948A"/>
+        <ellipse cx="32" cy="0" rx="32" ry="20" fill="#FADBD8"/>
+        <ellipse cx="18" cy="6" rx="7" ry="11" fill="#F1948A" transform="rotate(-15, 18, 6)"/>
+        <circle cx="7" cy="-3" r="7.5" fill="white"/>
+        <circle cx="8" cy="-2" r="4.5" fill="#1A1A1A"/>
+        <circle cx="5.5" cy="-5" r="1.5" fill="white"/>
+      </g>
+    </svg>
+
+    <div class="welcome-tags" style="display:none">
+      <span class="welcome-tag">💰 开店圣体</span>
+      <span class="welcome-tag">🗺️ 选址大神</span>
+      <span class="welcome-tag">👑 金币王</span>
+      <span class="welcome-tag">🚀 爆品机器</span>
+    </div>
+  </div>
+
+  <div class="welcome-bottom">
+    <button class="start-btn" onclick="startTest()">🔍 开始测试，揭晓我的创业人格</button>
+    <p class="welcome-tip">约2分钟 · 16道题 · 8种人格类型</p>
+  </div>
+</div>
+
+<!-- 测试页 -->
+<div id="test-page" class="page">
+  <div class="test-header">
+    <div class="test-header-top">
+      <button class="test-back" onclick="goBack()">←</button>
+      <span class="question-counter" id="q-counter">第1题 / 共16题</span>
+      <svg class="mascot-small" viewBox="0 0 40 28" xmlns="http://www.w3.org/2000/svg">
+        <!-- 小金鱼 -->
+        <path d="M30 14 L38 8 L36 14 L38 20 Z" fill="#E8B820"/>
+        <ellipse cx="18" cy="14" rx="16" ry="11" fill="#F4D03F"/>
+        <ellipse cx="15" cy="17" rx="10" ry="6" fill="#F9E87A" opacity="0.5"/>
+        <path d="M8 3 Q13 -3 22 4 L18 5 L9 5 Z" fill="#E8B820" opacity="0.8"/>
+        <ellipse cx="8" cy="19" rx="5" ry="8" fill="#E8B820" transform="rotate(-18, 8, 19)"/>
+        <circle cx="5" cy="11" r="5.5" fill="white"/>
+        <circle cx="6" cy="12" r="3.2" fill="#1A1A1A"/>
+        <circle cx="4" cy="10" r="1.2" fill="white"/>
+      </svg>
+    </div>
+    <div class="progress-bar-wrapper">
+      <div class="progress-bar-fill" id="progress-fill" style="width: 6.25%"></div>
+    </div>
+  </div>
+
+  <div class="test-body" id="questions-container">
+    <!-- 题目动态生成 -->
+  </div>
+</div>
+
+<!-- 加载页 -->
+<div id="loading-page" class="page">
+  <div class="loading-content">
+    <!-- 扁平插画风加载小鱼 -->
+    <svg class="loading-character" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+      <!-- 水流线 -->
+      <path d="M10 95 Q50 86 90 94 Q120 100 148 88" stroke="#D4EEF7" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- 气泡 -->
+      <circle cx="145" cy="30" r="5" fill="none" stroke="#B8DFF0" stroke-width="1.5"/>
+      <circle cx="153" cy="20" r="3" fill="none" stroke="#B8DFF0" stroke-width="1.2"/>
+      <circle cx="158" cy="12" r="2" fill="none" stroke="#B8DFF0" stroke-width="1"/>
+      <!-- 尾巴 -->
+      <path d="M115 58 L138 40 L133 58 L138 76 Z" fill="#E8B820"/>
+      <!-- 鱼身 -->
+      <ellipse cx="68" cy="58" rx="60" ry="40" fill="#F4D03F"/>
+      <!-- 高光 -->
+      <ellipse cx="56" cy="48" rx="36" ry="22" fill="#F9E87A" opacity="0.5"/>
+      <!-- 背鳍 -->
+      <path d="M28 18 Q46 -2 76 14 L68 18 L30 18 Z" fill="#E8B820" opacity="0.85"/>
+      <!-- 胸鳍 -->
+      <ellipse cx="28" cy="68" rx="12" ry="20" fill="#E8B820" transform="rotate(-20, 28, 68)"/>
+      <!-- 大眼睛 -->
+      <circle cx="14" cy="50" r="14" fill="white"/>
+      <circle cx="16" cy="51" r="8.5" fill="#1A1A1A"/>
+      <circle cx="12" cy="47" r="3.2" fill="white"/>
+      <!-- 嘴巴 -->
+      <path d="M6 62 Q10 67 15 63" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- 思考泡泡 -->
+      <circle cx="130" cy="28" r="3" fill="#E8E8E8"/>
+      <circle cx="140" cy="18" r="4.5" fill="#E8E8E8"/>
+      <rect x="130" y="5" width="26" height="18" rx="9" fill="#E8E8E8"/>
+      <text x="143" y="17" text-anchor="middle" font-size="9" fill="#666">🔍</text>
+    </svg>
+    <div class="loading-text">正在分析你的创业DNA...</div>
+    <div class="loading-dots">
+      <div class="loading-dot"></div>
+      <div class="loading-dot"></div>
+      <div class="loading-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 结果页 -->
+<div id="result-page" class="page">
+  <div class="result-stars" id="result-stars"></div>
+  <div class="result-content">
+    <div class="result-label">🎊 测试完成！你是——</div>
+
+    <!-- 结果卡片 -->
+    <div class="result-card" id="result-card">
+      <div class="result-card-header" id="result-card-header">
+        <div class="result-card-bg-deco" id="result-bg-deco"></div>
+        <div class="character-scene" id="character-scene">
+          <!-- SVG角色动态插入 -->
+        </div>
+        <div class="result-type-title" id="result-title">开店圣体</div>
+        <div class="result-type-tag" id="result-tag">🏪 天生老板</div>
+        <p class="result-desc" id="result-desc"></p>
+      </div>
+      <div class="result-card-body">
+        <div class="traits-section">
+          <div class="traits-title">你的创业超能力</div>
+          <div class="traits-grid" id="traits-grid"></div>
+        </div>
+        <div class="match-section">
+          <div class="match-title" id="match-title"></div>
+          <div class="match-text" id="match-text"></div>
+        </div>
+        <div class="quote-section">
+          <div class="quote-text" id="result-quote"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 操作按钮 -->
+    <div class="result-actions">
+      <button class="join-cta" onclick="showJoinInfo()">
+        <div class="join-cta-top">
+          <span class="join-cta-title">🌏 加入余村全球合伙人</span>
+          <span class="join-cta-arrow">→</span>
+        </div>
+        <div class="join-cta-desc">你的人格正好匹配我们！了解余村全球合伙人招募详情</div>
+      </button>
+      <button class="share-btn" onclick="showShareModal()">📤 分享给朋友，看看ta是什么类型</button>
+      <button class="retry-btn" onclick="retryTest()">↺ 再测一次</button>
+    </div>
+  </div>
+</div>
+
+<!-- 分享弹窗 -->
+<div class="share-modal" id="share-modal">
+  <div class="share-modal-inner">
+    <div class="share-modal-title">分享你的创业人格 🎉</div>
+    <div class="share-modal-desc">让朋友们也来测测，说不定你们能一起合伙！</div>
+    <div class="share-options">
+      <div class="share-option" onclick="shareToWechat()">
+        <div class="share-option-icon" style="background: #07C160;">💬</div>
+        <div class="share-option-text">微信好友</div>
+      </div>
+      <div class="share-option" onclick="shareToMoments()">
+        <div class="share-option-icon" style="background: #07C160;">🌟</div>
+        <div class="share-option-text">朋友圈</div>
+      </div>
+      <div class="share-option" onclick="copyLink()">
+        <div class="share-option-icon" style="background: #6C63FF;">🔗</div>
+        <div class="share-option-text">复制链接</div>
+      </div>
+    </div>
+    <button class="share-cancel" onclick="closeShareModal()">取消</button>
+  </div>
+</div>
+
+<!-- 合伙人信息弹窗 -->
+<div class="share-modal" id="join-modal">
+  <div class="share-modal-inner">
+    <div class="share-modal-title">🌏 余村全球合伙人计划</div>
+    <div style="padding: 0 4px; margin-bottom: 20px;">
+      <div style="background: linear-gradient(135deg, #F0FFF4, #E8F8E0); border-radius: 14px; padding: 16px; margin-bottom: 12px; border-left: 4px solid #06D6A0;">
+        <div style="font-size: 14px; color: #1A7A4A; font-weight: 700; margin-bottom: 8px;">🌿 关于余村</div>
+        <div style="font-size: 13px; color: #555; line-height: 1.7;">"绿水青山就是金山银山"理念发源地，联合国"世界最佳旅游乡村"。游客量超<strong>120万/年</strong>，旅游总收入突破<strong>100亿元</strong>，超<strong>1000万</strong>人次游客的打卡地。</div>
+      </div>
+      <div style="background: linear-gradient(135deg, #FFF0E8, #FFF8F0); border-radius: 14px; padding: 16px; margin-bottom: 12px;">
+        <div style="font-size: 14px; color: #FF6B35; font-weight: 700; margin-bottom: 10px;">💰 合伙人扶持政策</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-size: 13px; color: #555; display: flex; align-items: flex-start; gap: 8px;">
+            <span style="font-size: 15px; flex-shrink:0">🎁</span><span>青创项目补贴，最高<strong style="color:#FF6B35">25万元</strong></span>
+          </div>
+          <div style="font-size: 13px; color: #555; display: flex; align-items: flex-start; gap: 8px;">
+            <span style="font-size: 15px; flex-shrink:0">🏦</span><span>创业贷款贴息，最高<strong style="color:#FF6B35">300万元</strong></span>
+          </div>
+          <div style="font-size: 13px; color: #555; display: flex; align-items: flex-start; gap: 8px;">
+            <span style="font-size: 15px; flex-shrink:0">🚀</span><span>两山人才基金投资，最高<strong style="color:#FF6B35">800万元</strong></span>
+          </div>
+          <div style="font-size: 13px; color: #555; display: flex; align-items: flex-start; gap: 8px;">
+            <span style="font-size: 15px; flex-shrink:0">🏠</span><span>住房补贴<strong style="color:#FF6B35">900~4200元/月</strong> + 就业补贴</span>
+          </div>
+        </div>
+      </div>
+      <div style="background: #F8F5F0; border-radius: 14px; padding: 16px;">
+        <div style="font-size: 14px; color: #333; font-weight: 700; margin-bottom: 10px;">✨ 还有这些</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-size: 13px; color: #555; display: flex; align-items: center; gap: 8px;"><span>📍</span> 70+个优质空间资源精准匹配</div>
+          <div style="font-size: 13px; color: #555; display: flex; align-items: center; gap: 8px;"><span>🤝</span> 专属运营服务团队全周期陪伴</div>
+          <div style="font-size: 13px; color: #555; display: flex; align-items: center; gap: 8px;"><span>🌐</span> 共享"余村全球合伙人"超级IP</div>
+          <div style="font-size: 13px; color: #555; display: flex; align-items: center; gap: 8px;"><span>🔗</span> 链接全球合伙人生态网络</div>
+        </div>
+      </div>
+    </div>
+    <button class="start-btn" style="margin-bottom: 12px;" onclick="showQRCode()">📞 我要报名！联系招募团队</button>
+    <button class="share-cancel" onclick="closeJoinModal()">先了解一下</button>
+  </div>
+</div>
+
+<!-- 二维码弹窗 -->
+<div class="share-modal" id="qrcode-modal" style="z-index:1100;">
+  <div class="share-modal-content" style="max-width:320px; text-align:center; padding:28px 24px 24px;">
+    <div style="font-size:22px; font-weight:800; color:#1A7A4A; margin-bottom:6px;">🎉 扫码联系招募团队</div>
+    <div style="font-size:13px; color:#888; margin-bottom:18px;">长按或扫描二维码，立即咨询报名详情</div>
+    <div style="background:#fff; border-radius:16px; padding:12px; display:inline-block; box-shadow:0 4px 20px rgba(0,0,0,0.10);">
+      <img src="qrcode.png" alt="招募二维码" style="width:200px; height:200px; display:block; border-radius:8px;">
+    </div>
+    <div style="margin-top:14px; font-size:12px; color:#aaa;">余村全球合伙人招募专属通道</div>
+    <button class="share-cancel" style="margin-top:18px;" onclick="closeQRCode()">关闭</button>
+  </div>
+</div>
+
+<div class="confetti-container" id="confetti-container"></div>
+
+<script>
+// ===== 题目数据（结合余村合伙人招募背景微调） =====
+const questions = [
+  {
+    emoji: "🏪",
+    text: "朋友想在余村附近开一家小店，你第一个问题是？",
+    options: [
+      { text: "人多不多？选个游客必经的黄金位置！", value: "S" },
+      { text: "品牌故事有没有？得让人记住你", value: "B" },
+      { text: "成本和回本周期算清楚了吗？", value: "F" },
+      { text: "有没有差异化？余村同类店可不少", value: "I" }
+    ]
+  },
+  {
+    emoji: "💡",
+    text: "你对一个新的乡村创业点子，第一反应是——",
+    options: [
+      { text: "🔥 可以！脑子里已经在想怎么推爆它了", value: "B" },
+      { text: "🔍 先研究一下余村还缺什么业态", value: "I" },
+      { text: "💰 算一算这玩意儿能不能赚到钱再说", value: "F" },
+      { text: "📍 在哪里落地？位置选对了才好使！", value: "S" }
+    ]
+  },
+  {
+    emoji: "😤",
+    text: "你的乡村小店遇到淡季，客流骤降，你怎么办？",
+    options: [
+      { text: "马上搞活动！限时优惠把人气拉回来", value: "B" },
+      { text: "用数据复盘，找出到底哪个环节出了问题", value: "F" },
+      { text: "是不是位置不够显眼？想想能不能换个点位", value: "S" },
+      { text: "调整产品，做个新爆款吸引回头客", value: "I" }
+    ]
+  },
+  {
+    emoji: "🤝",
+    text: "在余村创业，你最希望的合伙人是？",
+    options: [
+      { text: "会营销、有流量、能把小店做成网红打卡地", value: "B" },
+      { text: "踏实稳重、财务清晰的数字控搭档", value: "F" },
+      { text: "人脉广、熟悉本地资源的乡村地头蛇", value: "S" },
+      { text: "有创意、敢折腾的疯子天才型队友", value: "I" }
+    ]
+  },
+  {
+    emoji: "🌏",
+    text: "你第一次来余村旅游，最先注意到的是？",
+    options: [
+      { text: "哪个地段人最多、哪条路客流最集中", value: "S" },
+      { text: "这里有哪些还没人做的新奇业态", value: "I" },
+      { text: "游客的消费能力怎么样、客单价大概多少", value: "F" },
+      { text: "哪些店品牌感强、哪些已经在爆火出圈", value: "B" }
+    ]
+  },
+  {
+    emoji: "📱",
+    text: "刷短视频，你最容易被哪种内容停住？",
+    options: [
+      { text: "「乡村选址秘诀：这个位置月流水翻5倍」", value: "S" },
+      { text: "「零粉丝起号，靠内容把乡村小店做成品牌」", value: "B" },
+      { text: "「用这套公式，精准测算乡村项目回报率」", value: "F" },
+      { text: "「没人发现的蓝海赛道：乡村+这个行业=暴利」", value: "I" }
+    ]
+  },
+  {
+    emoji: "💬",
+    text: "聚会时，你最容易兴奋地聊起什么话题？",
+    options: [
+      { text: "最近发现一个绝佳地段，人来人往超适合开店！", value: "S" },
+      { text: "某个乡村品牌怎么一夜爆红的全过程", value: "B" },
+      { text: "某个项目的商业模式和盈利逻辑", value: "I" },
+      { text: "怎么把有限的预算花到刀刃上、投资回报率怎么算", value: "F" }
+    ]
+  },
+  {
+    emoji: "🎯",
+    text: "如果你要在余村启动一个项目，最花时间的准备工作是？",
+    options: [
+      { text: "踩点选址！位置不对、努力白费", value: "S" },
+      { text: "做竞品分析，搞清楚余村还缺什么", value: "I" },
+      { text: "把资金规划和财务模型算清楚", value: "F" },
+      { text: "打磨品牌定位和用户画像", value: "B" }
+    ]
+  },
+  {
+    emoji: "🏆",
+    text: "你认为乡村创业项目成功最关键的因素是？",
+    options: [
+      { text: "地段！地段！地段！余村那么多点位关键看选哪个", value: "S" },
+      { text: "品牌力和口碑，游客愿意主动传播才是真赢", value: "B" },
+      { text: "精细化运营，把成本和收益每一分算清楚", value: "F" },
+      { text: "独特的产品或体验，让人来了还想再来", value: "I" }
+    ]
+  },
+  {
+    emoji: "🌱",
+    text: "余村是「绿水青山就是金山银山」的发源地，你最想在这里做什么？",
+    options: [
+      { text: "开个网红民宿/精品店，卡位好地段先赚到流量", value: "S" },
+      { text: "打造一个有乡村故事的品牌，让全国人民都知道余村", value: "B" },
+      { text: "深耕一个低竞争高利润的细分赛道，慢慢扎根", value: "I" },
+      { text: "整合本地资源，做轻资产、高回报的商业模型", value: "F" }
+    ]
+  },
+  {
+    emoji: "😰",
+    text: "创业头半年亏了一大笔钱，你的第一反应是？",
+    options: [
+      { text: "换个点位重来！位置选错了换了就好", value: "S" },
+      { text: "品牌没出圈，加大内容营销力度冲一把！", value: "B" },
+      { text: "全面复盘财务，找出到底钱烧在哪里", value: "F" },
+      { text: "产品方向判断错了，重新定位转型！", value: "I" }
+    ]
+  },
+  {
+    emoji: "🔮",
+    text: "5年后，你最希望自己是这样的——",
+    options: [
+      { text: "在余村及周边拥有多个优质点位/门店", value: "S" },
+      { text: "把一个品牌做到全国皆知、余村代名词", value: "B" },
+      { text: "财务自由，被动收入稳稳覆盖所有支出", value: "F" },
+      { text: "颠覆了某个行业，把一套新商业模式带进乡村", value: "I" }
+    ]
+  },
+  {
+    emoji: "😎",
+    text: "你最欣赏哪位企业家的创业路径？",
+    options: [
+      { text: "王石 · 精准卡位城市版图的地产大亨", value: "S" },
+      { text: "乔布斯 · 用产品改变世界的偏执狂天才", value: "I" },
+      { text: "巴菲特 · 用理性和数字战胜市场的长期主义者", value: "F" },
+      { text: "马云 · 用故事和品牌把中国小店推向全球的人", value: "B" }
+    ]
+  },
+  {
+    emoji: "🎪",
+    text: "余村举办一场盛大的青年梦想大会，你会是哪个角色？",
+    options: [
+      { text: "场地规划和空间设计——基础打好才好玩", value: "S" },
+      { text: "主舞台演讲嘉宾——我有故事要讲给大家", value: "B" },
+      { text: "创意展览和互动装置策划——搞点没人见过的", value: "I" },
+      { text: "幕后票务、商务和预算管理——稳稳把握每一分钱", value: "F" }
+    ]
+  },
+  {
+    emoji: "🧩",
+    text: "在一个创业团队里，你最自然的角色是？",
+    options: [
+      { text: "资源对接人——知道去哪找最好的本地资源", value: "S" },
+      { text: "品牌代言人——对外最好看的那张脸", value: "B" },
+      { text: "产品创造者——把想法真正落地变成现实", value: "I" },
+      { text: "财务管理者——钱的事我来守门，一分不乱", value: "F" }
+    ]
+  },
+  {
+    emoji: "🌟",
+    text: "加入余村全球合伙人，最让你心动的是？",
+    options: [
+      { text: "70+个优质点位资源，选到好地段直接起飞", value: "S" },
+      { text: "余村这个超级IP和「两山理念」的品牌背书", value: "B" },
+      { text: "绿色经济新赛道，低竞争高想象空间的蓝海", value: "I" },
+      { text: "最高25万创业补贴+300万贷款贴息，收益看得见", value: "F" }
+    ]
+  }
+];
+
+// ===== 人格类型定义 =====
+const personalities = {
+  S: {
+    id: "S",
+    title: "选址大神",
+    emoji: "📍",
+    tag: "🗺️ 地段猎人",
+    color: "#FF6B35",
+    gradientBg: "linear-gradient(135deg, #FF6B35 0%, #FF8E53 100%)",
+    desc: "你有一双能看穿人流密码的眼睛！商场里永远最热闹的档口、街边客流最爆的转角，都逃不过你的法眼。老天爷赏饭吃，你就是天生的地段猎人。别人还在看地图，你已经在数门口过了多少人。",
+    traits: [
+      { emoji: "👁️", text: "洞察人流" },
+      { emoji: "🗺️", text: "选址精准" },
+      { emoji: "📊", text: "数据直觉" },
+      { emoji: "🚀", text: "落地执行" }
+    ],
+    matchTitle: "🌿 为什么余村需要你？",
+    matchText: "余村年游客超120万，70+个优质空间精准匹配资源。你的选址天赋，在这片已经自带超级流量的土地上，能发挥到极致——好地段×高人流，直接起飞！",
+    quote: "好地段是天赐，能发现它——才是天才。",
+    svgId: "character-S"
+  },
+  B: {
+    id: "B",
+    title: "品牌造梦机",
+    emoji: "⭐",
+    tag: "📣 营销天才",
+    color: "#9B5DE5",
+    gradientBg: "linear-gradient(135deg, #9B5DE5 0%, #C77DFF 100%)",
+    desc: "你脑子里永远在转的不是算盘，是创意发动机！你知道怎么让一个普通的小店变成网红打卡地，怎么让产品自带传播属性。别人卖东西，你在卖故事；别人开店，你在建帝国。",
+    traits: [
+      { emoji: "✨", text: "品牌感知" },
+      { emoji: "📣", text: "营销创意" },
+      { emoji: "🌊", text: "传播势能" },
+      { emoji: "💫", text: "故事叙述" }
+    ],
+    matchTitle: "🌿 为什么余村需要你？",
+    matchText: "余村是「两山理念」的发源地，拥有联合国「世界最佳旅游乡村」光环——自带超级IP！你的品牌魔法×余村的故事，这就是双倍爆发的公式。",
+    quote: "没有故事的生意，只是一堆货物。",
+    svgId: "character-B"
+  },
+  F: {
+    id: "F",
+    title: "金币王",
+    emoji: "💰",
+    tag: "💎 财务之神",
+    color: "#F4A261",
+    gradientBg: "linear-gradient(135deg, #F4A261 0%, #FFD166 100%)",
+    desc: "你是人群中那个默默在心里算ROI的人，别人还在激动的时候，你已经算好了利润空间和回本周期。你的超能力是把所有创业激情翻译成白纸黑字的数字——而且基本都对。当别人问「怎么做」，你在想「能赚多少」。",
+    traits: [
+      { emoji: "💰", text: "财务精准" },
+      { emoji: "📐", text: "理性决策" },
+      { emoji: "🔢", text: "数字控" },
+      { emoji: "🛡️", text: "风控高手" }
+    ],
+    matchTitle: "🌿 为什么余村需要你？",
+    matchText: "余村合伙人享受最高25万创业补贴、300万贷款贴息、800万基金支持——账算得清清楚楚的地方，才是金币王最爱的战场！每一分投入都有迹可循。",
+    quote: "创业不是赌博，是带着计算的冒险。",
+    svgId: "character-F"
+  },
+  I: {
+    id: "I",
+    title: "爆品机器",
+    emoji: "🚀",
+    tag: "💡 颠覆者",
+    color: "#06D6A0",
+    gradientBg: "linear-gradient(135deg, #06D6A0 0%, #4CC9F0 100%)",
+    desc: "你是商业世界里那个永远不按套路出牌的人！当所有人都在卷同一个赛道，你已经绕到了别人没发现的蓝海。你的大脑是一台永动创新机，而且你还真的能把天马行空的想法落地——这才是最可怕的地方。",
+    traits: [
+      { emoji: "💡", text: "创新思维" },
+      { emoji: "🔭", text: "趋势嗅觉" },
+      { emoji: "⚡", text: "执行爆发" },
+      { emoji: "🎯", text: "差异定位" }
+    ],
+    matchTitle: "🌿 为什么余村需要你？",
+    matchText: "余村是绿色经济的真正前沿：文旅、科技、农业、数字化……大量细分赛道还没人跑进来！你的创新雷达在这里，正好如鱼得水——下一个爆品，就从这里诞生！",
+    quote: "创新不是标新立异，是在对的地方做不一样的事。",
+    svgId: "character-I"
+  }
+};
+
+// ===== 角色SVG（扁平插画风：白底彩色金鱼，配职业道具，参考锦鲤插画风格） =====
+function getCharacterSVG(type) {
+  const svgs = {
+
+    // S 选址大神 —— 橙黄金鱼，手持放大镜，旁边有地图/定位图标
+    S: `<svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <!-- 水流线装饰 -->
+      <path d="M20 200 Q60 192 100 200 Q140 208 175 196" stroke="#D4EEF7" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <circle cx="170" cy="40" r="4" fill="none" stroke="#B8DFF0" stroke-width="1.5"/>
+      <circle cx="182" cy="28" r="2.5" fill="none" stroke="#B8DFF0" stroke-width="1.2"/>
+
+      <!-- 鱼身体（圆润金黄，朝右） -->
+      <g transform="translate(35, 90)">
+        <!-- 尾巴 -->
+        <path d="M110 18 L135 -2 L130 18 L135 38 Z" fill="#E8B820"/>
+        <!-- 身体 -->
+        <ellipse cx="64" cy="18" rx="62" ry="42" fill="#F4D03F"/>
+        <!-- 肚皮高光 -->
+        <ellipse cx="55" cy="26" rx="40" ry="22" fill="#F9E87A" opacity="0.55"/>
+        <!-- 背鳍 -->
+        <path d="M30 -24 Q52 -48 85 -28 L76 -22 L34 -22 Z" fill="#E8B820" opacity="0.85"/>
+        <!-- 胸鳍 -->
+        <ellipse cx="32" cy="28" rx="13" ry="22" fill="#E8B820" transform="rotate(-22, 32, 28)"/>
+        <!-- 大眼睛 -->
+        <circle cx="12" cy="10" r="15" fill="white"/>
+        <circle cx="14" cy="11" r="9" fill="#1A1A1A"/>
+        <circle cx="10" cy="7" r="3.5" fill="white"/>
+        <!-- 嘴巴（小圆弧） -->
+        <path d="M5 20 Q8 24 12 21" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- 道具：放大镜（手持） -->
+      <g transform="translate(130, 55)">
+        <circle cx="22" cy="22" r="18" fill="none" stroke="#FF6B35" stroke-width="4"/>
+        <circle cx="22" cy="22" r="12" fill="rgba(255,200,100,0.18)"/>
+        <!-- 镜内地图线 -->
+        <path d="M14 22 L30 22 M22 14 L22 30" stroke="#FF6B35" stroke-width="2" opacity="0.5"/>
+        <!-- 镜柄 -->
+        <line x1="34" y1="34" x2="50" y2="52" stroke="#FF6B35" stroke-width="5" stroke-linecap="round"/>
+      </g>
+
+      <!-- 小地图图标 -->
+      <g transform="translate(20, 40)">
+        <path d="M14 0 C14 0 0 8 0 22 C0 30 14 44 14 44 C14 44 28 30 28 22 C28 8 14 0 14 0Z" fill="#FF6B35" opacity="0.85"/>
+        <circle cx="14" cy="22" r="6" fill="white"/>
+        <!-- 小字PIN -->
+        <text x="14" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#FF6B35" font-family="PingFang SC,sans-serif">选址大神</text>
+      </g>
+    </svg>`,
+
+    // B 品牌造梦机 —— 粉紫大鱼，旁边有调色板/星形爆炸装饰
+    B: `<svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <!-- 水流线装饰 -->
+      <path d="M20 200 Q60 192 100 200 Q140 208 175 196" stroke="#EBD5F5" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <circle cx="175" cy="42" r="4" fill="none" stroke="#DDB8F0" stroke-width="1.5"/>
+      <circle cx="186" cy="30" r="2.5" fill="none" stroke="#DDB8F0" stroke-width="1.2"/>
+
+      <!-- 鱼身体（圆润粉紫，方向朝右） -->
+      <g transform="translate(28, 85)">
+        <!-- 尾巴 -->
+        <path d="M118 22 L144 0 L138 22 L144 44 Z" fill="#C77DFF"/>
+        <!-- 身体（圆胖型） -->
+        <ellipse cx="68" cy="22" rx="66" ry="48" fill="#E685B5"/>
+        <!-- 渐变层次感 -->
+        <ellipse cx="58" cy="14" rx="44" ry="30" fill="#F4A7D0" opacity="0.55"/>
+        <!-- 肚皮高光 -->
+        <ellipse cx="58" cy="32" rx="40" ry="20" fill="#FADDEE" opacity="0.4"/>
+        <!-- 背鳍（波浪形，品牌造型） -->
+        <path d="M28 -26 Q42 -50 60 -38 Q76 -26 92 -36 L88 -24 L30 -24 Z" fill="#C77DFF" opacity="0.85"/>
+        <!-- 胸鳍 -->
+        <ellipse cx="30" cy="35" rx="14" ry="24" fill="#C77DFF" transform="rotate(-22, 30, 35)"/>
+        <!-- 大眼睛 -->
+        <circle cx="12" cy="12" r="16" fill="white"/>
+        <circle cx="14" cy="13" r="10" fill="#5D3A8C"/>
+        <circle cx="10" cy="8" r="4" fill="white"/>
+        <!-- 嘴巴（开心小嘴） -->
+        <path d="M4 24 Q9 30 15 25" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- 道具：调色盘 -->
+      <g transform="translate(130, 48)">
+        <!-- 调色盘主体 -->
+        <ellipse cx="28" cy="28" rx="26" ry="22" fill="#FAF0FF" stroke="#C77DFF" stroke-width="2.5"/>
+        <!-- 颜料点 -->
+        <circle cx="16" cy="16" r="5" fill="#E74C3C"/>
+        <circle cx="30" cy="10" r="5" fill="#F4D03F"/>
+        <circle cx="44" cy="16" r="5" fill="#3498DB"/>
+        <circle cx="48" cy="30" r="5" fill="#2ECC71"/>
+        <circle cx="40" cy="42" r="5" fill="#9B5DE5"/>
+        <!-- 拇指孔 -->
+        <circle cx="16" cy="36" r="5" fill="#FAFAF7" stroke="#C77DFF" stroke-width="1.5"/>
+        <!-- 小字 -->
+        <text x="28" y="70" text-anchor="middle" font-size="10" font-weight="700" fill="#9B5DE5" font-family="PingFang SC,sans-serif">品牌造梦机</text>
+      </g>
+
+      <!-- 星形装饰 -->
+      <g transform="translate(18, 38)">
+        <path d="M12 0 L14.5 8.5 L23 8.5 L16.5 14 L19 22 L12 17 L5 22 L7.5 14 L1 8.5 L9.5 8.5 Z" fill="#FFD166" opacity="0.9"/>
+      </g>
+      <g transform="translate(155, 160)">
+        <path d="M8 0 L9.5 5 L15 5 L10.5 8.5 L12 14 L8 11 L4 14 L5.5 8.5 L1 5 L6.5 5 Z" fill="#F4A261" opacity="0.7"/>
+      </g>
+    </svg>`,
+
+    // F 金币王 —— 金黄色大鱼，旁边有金币、算盘/图表装饰
+    F: `<svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <!-- 水流线装饰 -->
+      <path d="M20 200 Q60 192 100 200 Q140 208 175 196" stroke="#FEF0CD" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <circle cx="172" cy="40" r="4" fill="none" stroke="#F9D88A" stroke-width="1.5"/>
+      <circle cx="184" cy="28" r="2.5" fill="none" stroke="#F9D88A" stroke-width="1.2"/>
+
+      <!-- 鱼身体（暖橙金，身体较修长） -->
+      <g transform="translate(28, 92)">
+        <!-- 尾巴（扇形，气势感） -->
+        <path d="M115 18 L138 -6 L134 18 L138 42 Z" fill="#E67E22"/>
+        <path d="M118 18 L145 8 L140 18 L145 28 Z" fill="#F39C12" opacity="0.7"/>
+        <!-- 身体 -->
+        <ellipse cx="65" cy="18" rx="62" ry="40" fill="#F39C12"/>
+        <!-- 暗纹条带（金鱼花纹） -->
+        <ellipse cx="80" cy="18" rx="30" ry="30" fill="#E67E22" opacity="0.25"/>
+        <!-- 肚皮高光 -->
+        <ellipse cx="55" cy="26" rx="38" ry="20" fill="#FDEBD0" opacity="0.5"/>
+        <!-- 背鳍 -->
+        <path d="M28 -22 Q50 -46 82 -26 L74 -20 L32 -20 Z" fill="#E67E22" opacity="0.85"/>
+        <!-- 胸鳍 -->
+        <ellipse cx="30" cy="30" rx="13" ry="21" fill="#E67E22" transform="rotate(-20, 30, 30)"/>
+        <!-- 大眼睛 -->
+        <circle cx="12" cy="10" r="15" fill="white"/>
+        <circle cx="14" cy="11" r="9" fill="#1A1A1A"/>
+        <circle cx="10" cy="7" r="3.5" fill="white"/>
+        <!-- 嘴巴 -->
+        <path d="M4 19 Q8 23 12 20" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- 道具：大金币 -->
+      <g transform="translate(132, 42)">
+        <circle cx="28" cy="28" r="28" fill="#F4D03F" stroke="#E8B820" stroke-width="3"/>
+        <circle cx="28" cy="28" r="20" fill="none" stroke="#E8B820" stroke-width="1.5"/>
+        <text x="28" y="34" text-anchor="middle" font-size="22" font-weight="900" fill="#8B6914" font-family="PingFang SC,sans-serif">¥</text>
+      </g>
+
+      <!-- 小金币散落 -->
+      <circle cx="150" cy="105" r="8" fill="#F4D03F" stroke="#E8B820" stroke-width="1.5"/>
+      <text x="150" y="110" text-anchor="middle" font-size="8" font-weight="700" fill="#8B6914">¥</text>
+      <circle cx="165" cy="125" r="6" fill="#F4D03F" stroke="#E8B820" stroke-width="1.2"/>
+
+      <!-- 图表装饰 -->
+      <g transform="translate(20, 44)">
+        <!-- 折线图 -->
+        <rect x="0" y="0" width="44" height="32" rx="6" fill="white" stroke="#F39C12" stroke-width="1.5"/>
+        <polyline points="6,24 14,16 22,20 30,10 38,14" stroke="#E8B820" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        <circle cx="30" cy="10" r="2.5" fill="#F4D03F"/>
+        <text x="22" y="46" text-anchor="middle" font-size="10" font-weight="700" fill="#F39C12" font-family="PingFang SC,sans-serif">金币王</text>
+      </g>
+    </svg>`,
+
+    // I 爆品机器 —— 活泼红橙鱼，旁边有火箭/爆炸光芒装饰
+    I: `<svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <!-- 水流线装饰 -->
+      <path d="M20 200 Q60 192 100 200 Q140 208 175 196" stroke="#C8F5E8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <circle cx="172" cy="40" r="4" fill="none" stroke="#90E0C5" stroke-width="1.5"/>
+      <circle cx="184" cy="28" r="2.5" fill="none" stroke="#90E0C5" stroke-width="1.2"/>
+
+      <!-- 鱼身（活泼橙红，身体圆润有力） -->
+      <g transform="translate(30, 88)">
+        <!-- 尾巴（大扇尾，活力感） -->
+        <path d="M112 20 L138 -5 L132 20 L138 45 Z" fill="#E74C3C"/>
+        <path d="M116 20 L144 10 L138 20 L144 30 Z" fill="#FF6B35" opacity="0.8"/>
+        <!-- 身体 -->
+        <ellipse cx="64" cy="20" rx="62" ry="44" fill="#E74C3C"/>
+        <!-- 亮色块 -->
+        <ellipse cx="52" cy="10" rx="36" ry="26" fill="#FF6B35" opacity="0.45"/>
+        <!-- 肚皮高光 -->
+        <ellipse cx="56" cy="30" rx="38" ry="20" fill="#FDDDD8" opacity="0.45"/>
+        <!-- 背鳍（硬朗多刺，爆品感） -->
+        <path d="M25 -22 L36 -40 L48 -26 L60 -44 L72 -28 L84 -42 L96 -26 L88 -20 L28 -20 Z" fill="#C0392B" opacity="0.85"/>
+        <!-- 胸鳍 -->
+        <ellipse cx="28" cy="32" rx="14" ry="23" fill="#C0392B" transform="rotate(-20, 28, 32)"/>
+        <!-- 大眼睛 -->
+        <circle cx="11" cy="11" r="16" fill="white"/>
+        <circle cx="13" cy="12" r="10" fill="#2C3E50"/>
+        <circle cx="9" cy="7" r="4" fill="white"/>
+        <!-- 兴奋光芒（眼旁） -->
+        <path d="M0 0 L-8 -8" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+        <path d="M0 2 L-10 0" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+        <!-- 嘴巴（开心大嘴） -->
+        <path d="M3 23 Q10 32 18 24" stroke="#333" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- 道具：火箭 -->
+      <g transform="translate(136, 35)">
+        <!-- 火箭主体 -->
+        <path d="M28 52 Q14 52 10 36 L20 4 Q24 -4 28 -4 Q32 -4 36 4 L46 36 Q42 52 28 52 Z" fill="#4CC9F0"/>
+        <!-- 火箭窗口 -->
+        <circle cx="28" cy="26" r="9" fill="white"/>
+        <circle cx="28" cy="26" r="6" fill="#B8DEF0"/>
+        <!-- 火箭翼 -->
+        <path d="M10 38 L0 52 L14 46 Z" fill="#2980B9"/>
+        <path d="M46 38 L56 52 L42 46 Z" fill="#2980B9"/>
+        <!-- 火焰 -->
+        <path d="M20 52 Q24 66 28 60 Q32 66 36 52 Z" fill="#F4D03F"/>
+        <path d="M22 52 Q26 62 28 56 Q30 62 34 52 Z" fill="#FF6B35"/>
+      </g>
+
+      <!-- 爆炸星形光芒 -->
+      <g transform="translate(22, 40)">
+        <path d="M14 0 L16 10 L24 6 L18 14 L26 18 L16 18 L16 28 L12 18 L2 20 L10 14 L4 8 L14 12 Z" fill="#FFD166" opacity="0.9"/>
+      </g>
+      <g transform="translate(155, 155)">
+        <path d="M10 0 L11.5 7 L18 4 L13 10 L19 13 L11.5 13 L11.5 20 L8.5 13 L1.5 14.5 L7 10 L2.5 6 L10 9 Z" fill="#F4A261" opacity="0.75"/>
+      </g>
+
+      <!-- 标签 -->
+      <text x="100" y="228" text-anchor="middle" font-size="10" font-weight="700" fill="#06D6A0" font-family="PingFang SC,sans-serif">爆品机器</text>
+    </svg>`
+  };
+  return svgs[type] || svgs['S'];
+}
+
+// ===== 状态 =====
+let currentQuestion = 0;
+let answers = [];
+let scores = { S: 0, B: 0, F: 0, I: 0 };
+
+// ===== 初始化题目 =====
+function initQuestions() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+
+  questions.forEach((q, index) => {
+    const card = document.createElement('div');
+    card.className = `question-card${index === 0 ? ' active' : ''}`;
+    card.id = `q-${index}`;
+
+    card.innerHTML = `
+      <span class="question-emoji">${q.emoji}</span>
+      <div class="question-text">${q.text}</div>
+      <div class="options-list">
+        ${q.options.map((opt, i) => `
+          <button class="option-btn" onclick="selectOption(${index}, ${i}, '${opt.value}')" id="opt-${index}-${i}">
+            <span class="option-label">${String.fromCharCode(65 + i)}</span>${opt.text}
+          </button>
+        `).join('')}
+      </div>
+      <button class="next-btn" id="next-${index}" onclick="nextQuestion(${index})">
+        ${index === questions.length - 1 ? '🎯 查看我的创业人格 →' : '下一题 →'}
+      </button>
+      ${index === 0 ? '<div class="fun-tip">💡 别想太多，第一直觉最准！</div>' : ''}
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+// ===== 选择选项 =====
+function selectOption(qIndex, optIndex, value) {
+  // 清除同题所有选中状态
+  questions[qIndex].options.forEach((_, i) => {
+    const btn = document.getElementById(`opt-${qIndex}-${i}`);
+    btn.classList.remove('selected');
+  });
+
+  // 标记选中
+  document.getElementById(`opt-${qIndex}-${optIndex}`).classList.add('selected');
+
+  // 保存答案
+  answers[qIndex] = { optIndex, value };
+
+  // 显示下一题按钮
+  const nextBtn = document.getElementById(`next-${qIndex}`);
+  nextBtn.classList.add('visible');
+
+  // 震动反馈
+  if (navigator.vibrate) navigator.vibrate(30);
+
+  // 如果是最后一题，延迟自动跳转
+  if (qIndex === questions.length - 1) {
+    // 等用户点按钮
+  } else {
+    // 非最后题，1.2秒后自动下一题
+    setTimeout(() => {
+      if (document.getElementById(`opt-${qIndex}-${optIndex}`).classList.contains('selected')) {
+        nextQuestion(qIndex);
+      }
+    }, 1000);
+  }
+}
+
+// ===== 下一题 =====
+function nextQuestion(currentIndex) {
+  if (!answers[currentIndex]) return;
+
+  // 计分
+  scores[answers[currentIndex].value]++;
+
+  if (currentIndex === questions.length - 1) {
+    // 最后一题，计算结果
+    scores[answers[currentIndex].value]++;
+    showLoading();
+    return;
+  }
+
+  // 隐藏当前题
+  document.getElementById(`q-${currentIndex}`).classList.remove('active');
+
+  // 显示下一题
+  const nextIndex = currentIndex + 1;
+  document.getElementById(`q-${nextIndex}`).classList.add('active');
+  currentQuestion = nextIndex;
+
+  // 更新进度
+  updateProgress(nextIndex);
+
+  // 滚动到顶部
+  document.querySelector('.test-body').scrollTop = 0;
+}
+
+// ===== 更新进度 =====
+function updateProgress(index) {
+  const progress = ((index + 1) / questions.length) * 100;
+  document.getElementById('progress-fill').style.width = `${progress}%`;
+  document.getElementById('q-counter').textContent = `第${index + 1}题 / 共${questions.length}题`;
+}
+
+// ===== 显示加载 =====
+function showLoading() {
+  showPage('loading-page');
+  setTimeout(() => {
+    calculateResult();
+  }, 2500);
+}
+
+// ===== 计算结果 =====
+function calculateResult() {
+  // 找最高分
+  let maxScore = -1;
+  let resultType = 'S';
+  Object.keys(scores).forEach(type => {
+    if (scores[type] > maxScore) {
+      maxScore = scores[type];
+      resultType = type;
+    }
+  });
+
+  const personality = personalities[resultType];
+  renderResult(personality);
+  showPage('result-page');
+  triggerConfetti();
+  generateStars();
+}
+
+// ===== 渲染结果 =====
+function renderResult(p) {
+  document.getElementById('result-title').textContent = p.emoji + ' ' + p.title;
+  document.getElementById('result-tag').textContent = p.tag;
+  document.getElementById('result-tag').style.background = p.gradientBg;
+  document.getElementById('result-desc').textContent = p.desc;
+  document.getElementById('result-quote').textContent = '「' + p.quote + '」';
+  document.getElementById('match-title').textContent = p.matchTitle;
+  document.getElementById('match-text').textContent = p.matchText;
+
+  // 设置卡片头部背景色
+  document.getElementById('result-card-header').style.background = `linear-gradient(160deg, ${p.color}15, white 60%)`;
+
+  // 渲染角色
+  document.getElementById('character-scene').innerHTML = getCharacterSVG(p.id);
+
+  // 渲染特质
+  const traitsGrid = document.getElementById('traits-grid');
+  traitsGrid.innerHTML = p.traits.map(t => `
+    <div class="trait-item">
+      <span class="trait-emoji">${t.emoji}</span>
+      <span class="trait-text">${t.text}</span>
+    </div>
+  `).join('');
+}
+
+// ===== 生成装饰小鱼点 =====
+function generateStars() {
+  const container = document.getElementById('result-stars');
+  const fishColors = ['#F4D03F', '#E74C3C', '#58D68D', '#E685B5', '#F0A07A', '#4CC9F0', '#C77DFF'];
+  for (let i = 0; i < 20; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.background = fishColors[Math.floor(Math.random() * fishColors.length)];
+    star.style.opacity = '0.18';
+    star.style.animationDelay = `${Math.random() * 2}s`;
+    star.style.animationDuration = `${2 + Math.random() * 2}s`;
+    star.style.width = `${4 + Math.random() * 6}px`;
+    star.style.height = `${4 + Math.random() * 6}px`;
+    container.appendChild(star);
+  }
+}
+
+// ===== 彩带效果 =====
+function triggerConfetti() {
+  const container = document.getElementById('confetti-container');
+  const colors = ['#FF6B35', '#FFD166', '#06D6A0', '#9B5DE5', '#4CC9F0', '#FF6B9D'];
+
+  for (let i = 0; i < 60; i++) {
+    setTimeout(() => {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = `${Math.random() * 100}%`;
+      piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.width = `${6 + Math.random() * 8}px`;
+      piece.style.height = `${6 + Math.random() * 8}px`;
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      piece.style.animationDuration = `${1.5 + Math.random() * 2}s`;
+      container.appendChild(piece);
+      setTimeout(() => piece.remove(), 4000);
+    }, i * 50);
+  }
+}
+
+// ===== 页面切换 =====
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function startTest() {
+  initQuestions();
+  currentQuestion = 0;
+  answers = [];
+  scores = { S: 0, B: 0, F: 0, I: 0 };
+  updateProgress(0);
+  showPage('test-page');
+}
+
+function goBack() {
+  if (currentQuestion > 0) {
+    document.getElementById(`q-${currentQuestion}`).classList.remove('active');
+    currentQuestion--;
+    document.getElementById(`q-${currentQuestion}`).classList.add('active');
+    updateProgress(currentQuestion);
+    // 撤销上一题的答案
+    if (answers[currentQuestion]) {
+      scores[answers[currentQuestion].value]--;
+    }
+  } else {
+    showPage('welcome-page');
+  }
+}
+
+function retryTest() {
+  document.getElementById('result-stars').innerHTML = '';
+  document.getElementById('confetti-container').innerHTML = '';
+  showPage('welcome-page');
+}
+
+// ===== 分享相关 =====
+function showShareModal() {
+  document.getElementById('share-modal').classList.add('active');
+}
+
+function closeShareModal() {
+  document.getElementById('share-modal').classList.remove('active');
+}
+
+function shareToWechat() {
+  alert('请截图保存后分享到微信 📱');
+  closeShareModal();
+}
+
+function shareToMoments() {
+  alert('请截图保存后发布到朋友圈 🌟');
+  closeShareModal();
+}
+
+function copyLink() {
+  const text = '我做了YUTI创业人格测试，快来测测你是哪种创业神兽！';
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text + ' https://yucun.yuti-test.com');
+  }
+  alert('链接已复制！快去分享给朋友吧 🎉');
+  closeShareModal();
+}
+
+// ===== 合伙人信息 =====
+function showJoinInfo() {
+  document.getElementById('join-modal').classList.add('active');
+}
+
+function closeJoinModal() {
+  document.getElementById('join-modal').classList.remove('active');
+}
+
+function showQRCode() {
+  document.getElementById('qrcode-modal').classList.add('active');
+}
+
+function closeQRCode() {
+  document.getElementById('qrcode-modal').classList.remove('active');
+}
+
+// 点击遮罩关闭弹窗
+document.querySelectorAll('.share-modal').forEach(modal => {
+  modal.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.remove('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
