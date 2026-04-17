@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>YUTI测试二维码</title></head>
+<body style="display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;background:#fff;font-family:sans-serif;">
+  <div style="text-align:center;">
+    <img id="qr" width="280" height="280" />
+    <p style="margin-top:16px;color:#666;font-size:14px;">扫一扫，做测试</p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script>
+    var qr = qrcode(0, 'M');
+    qr.addData('https://yuti-test01-1310523959.cos-website.ap-guangzhou.myqcloud.com');
+    qr.make();
+    document.getElementById('qr').src = qr.createDataURL(8, 0);
+  </script>
+</body>
+</html>

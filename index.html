@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>YUTI创业人格测试 · 余村全球合伙人</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <style>
     /* ===== 全局样式 ===== */
     * {
@@ -1101,23 +1102,24 @@
 <!-- 分享弹窗 -->
 <div class="share-modal" id="share-modal">
   <div class="share-modal-inner">
-    <div class="share-modal-title">分享你的创业人格 🎉</div>
-    <div class="share-modal-desc">让朋友们也来测测，说不定你们能一起合伙！</div>
-    <div class="share-options">
-      <div class="share-option" onclick="shareToWechat()">
-        <div class="share-option-icon" style="background: #07C160;">💬</div>
-        <div class="share-option-text">微信好友</div>
+    <div class="share-modal-title">分享给朋友 🎉</div>
+    <div class="share-modal-desc">让ta也来测测，你们说不定能一起合伙！</div>
+
+    <!-- 二维码区域 -->
+    <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:20px;">
+      <div style="background:#fff; border-radius:16px; padding:12px; box-shadow:0 4px 20px rgba(0,0,0,0.10); margin-bottom:10px;">
+        <div id="share-qrcode"></div>
       </div>
-      <div class="share-option" onclick="shareToMoments()">
-        <div class="share-option-icon" style="background: #07C160;">🌟</div>
-        <div class="share-option-text">朋友圈</div>
-      </div>
-      <div class="share-option" onclick="copyLink()">
-        <div class="share-option-icon" style="background: #6C63FF;">🔗</div>
-        <div class="share-option-text">复制链接</div>
-      </div>
+      <div style="font-size:12px; color:#aaa;">扫码即可开始测试</div>
     </div>
-    <button class="share-cancel" onclick="closeShareModal()">取消</button>
+
+    <!-- 链接复制区 -->
+    <div style="display:flex; align-items:center; gap:8px; background:#F8F5F0; border-radius:12px; padding:10px 14px; margin-bottom:16px;">
+      <div style="flex:1; font-size:13px; color:#555; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" id="share-link-text">https://yasnnine.github.io/yuti-test/</div>
+      <button onclick="copyShareLink()" id="copy-link-btn" style="flex-shrink:0; background:linear-gradient(135deg,#FF6B35,#FF8E53); color:white; border:none; border-radius:8px; padding:7px 14px; font-size:13px; font-weight:700; cursor:pointer;">复制</button>
+    </div>
+
+    <button class="share-cancel" onclick="closeShareModal()">关闭</button>
   </div>
 </div>
 
@@ -1158,7 +1160,7 @@
       </div>
     </div>
     <button class="start-btn" style="margin-bottom: 12px;" onclick="showQRCode()">📞 我要报名！联系招募团队</button>
-    <button class="share-cancel" onclick="closeJoinModal()">先了解一下</button>
+    <button class="share-cancel" onclick="window.open('https://mp.weixin.qq.com/s/GaSFZhOfMDJtxoF_gCKM6Q','_blank')">先了解一下</button>
   </div>
 </div>
 
@@ -1696,18 +1698,6 @@ function selectOption(qIndex, optIndex, value) {
 
   // 震动反馈
   if (navigator.vibrate) navigator.vibrate(30);
-
-  // 如果是最后一题，延迟自动跳转
-  if (qIndex === questions.length - 1) {
-    // 等用户点按钮
-  } else {
-    // 非最后题，1.2秒后自动下一题
-    setTimeout(() => {
-      if (document.getElementById(`opt-${qIndex}-${optIndex}`).classList.contains('selected')) {
-        nextQuestion(qIndex);
-      }
-    }, 1000);
-  }
 }
 
 // ===== 下一题 =====
@@ -1877,12 +1867,58 @@ function retryTest() {
 }
 
 // ===== 分享相关 =====
+const SHARE_URL = 'https://yasnnine.github.io/yuti-test/';
+let shareQRCodeGenerated = false;
+
 function showShareModal() {
   document.getElementById('share-modal').classList.add('active');
+  // 只生成一次二维码
+  if (!shareQRCodeGenerated) {
+    shareQRCodeGenerated = true;
+    const container = document.getElementById('share-qrcode');
+    container.innerHTML = '';
+    new QRCode(container, {
+      text: SHARE_URL,
+      width: 180,
+      height: 180,
+      colorDark: '#2D2D2D',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  }
 }
 
 function closeShareModal() {
   document.getElementById('share-modal').classList.remove('active');
+}
+
+function copyShareLink() {
+  const url = SHARE_URL;
+  const btn = document.getElementById('copy-link-btn');
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(() => {
+      btn.textContent = '已复制✓';
+      btn.style.background = '#06D6A0';
+      setTimeout(() => {
+        btn.textContent = '复制';
+        btn.style.background = 'linear-gradient(135deg,#FF6B35,#FF8E53)';
+      }, 2000);
+    });
+  } else {
+    // 兼容旧浏览器
+    const el = document.createElement('textarea');
+    el.value = url;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    btn.textContent = '已复制✓';
+    btn.style.background = '#06D6A0';
+    setTimeout(() => {
+      btn.textContent = '复制';
+      btn.style.background = 'linear-gradient(135deg,#FF6B35,#FF8E53)';
+    }, 2000);
+  }
 }
 
 function shareToWechat() {
@@ -1896,12 +1932,7 @@ function shareToMoments() {
 }
 
 function copyLink() {
-  const text = '我做了YUTI创业人格测试，快来测测你是哪种创业神兽！';
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text + ' https://yucun.yuti-test.com');
-  }
-  alert('链接已复制！快去分享给朋友吧 🎉');
-  closeShareModal();
+  copyShareLink();
 }
 
 // ===== 合伙人信息 =====
